@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    </head>
+</head>
+<body id ="ma" class="bg-cover bg-[url('./img/4.avif')]">
+    
+    <header class="text-gray-300 body-font">
+      <div class="container mx-auto flex flex-wrap p-[2%] flex-col md:flex-row items-center md:justify-between">
+        <a class="title-font font-medium items-center text-gray-300 mb-4 md:mb-0">
+          <div class="ml-3 text-5xl  bg-slate-900 p-2 animate-bounce rounded-md hidden" id ="currentLocation">Current Location</div>
+        </a>
+        <input class="lg:w-[30%] placeholder:bold capitalize placeholder:text-gray-300 placeholder:text-lg block bg-slate-900 border border-slate-900 hover:bg-slate-800 rounded-md hover:ease-in duration-300 hover:scale-150 p-[1%] shadow-sm focus:outline-none  focus:ring-1 sm:text-sm" placeholder="Search for any location..." type="text" name="search1" id="city"/>
+        <button class=" lg:mr-[10%] lg:w-[10%] items-center bg-slate-900 border-0 p-[1%] focus:outline-none hover:bg-slate-800 rounded text-base hover:ease-in duration-300 hover:scale-125 mt-4 md:mt-0" id="search">Search
+        </button>
+      </div>
+    </header>
+  
+    <div class="ml-3 text-5xl  bg-slate-900 text-gray-300 p-2  rounded-md hidden mb-5" id ="noResult"></div>
+    <button class=" absolute right-[5%] text-xl  bg-blue-900 text-gray-300 p-2  rounded-full animate-pulse" id ="myLocation">My Location</button>
+
+    <!--Main Section-->
+    <section class=" bg-blue-800 lg:rounded-full mt-[5%] hover:bg-blue-700 hidden" id="hero">
+        <div class="container mx-auto flex px-[2%] py-[1%] md:flex-row flex-col items-center">
+          <div class="lg:max-w-[30%]  md:w-1/2 w-80 mb-10 md:mb-0 flex-flex-col ml-[5%] px-[2%] items-center ">
+            <div  id="time" class="text-6xl text-gray-300 font-medium"></div>
+            <div id="date" class="text-5xl text-gray-400"></div>
+            <h1 id ="temp"class="text-4xl mt-2 text-gray-300 animate-pulse"></h1>
+            <div>
+                <img id ="img" class="animate-spin"/>
+                <p id="desc" class="text-2xl mt-2 capitalize text-yellow-500 font-bold"></p>
+            </div>
+          </div>
+          <div>
+          <div class=" flex-col md:flex md:flex-row">
+          <div class=" lg:pl-20 md:pl-16 flex flex-col md:items-start md:text-left items-center text-center ">
+            <div class="p-4 w-full md:w-[110%] lg:w-[142%] hover:scale-110 hover:ease-in duration-300">
+                <div class="h-full p-6 rounded-lg border-2 border-gray-300 flex flex-col relative">
+                    <h2 class="text-5xl text-yellow-500 pb-4 mb-4 border-b border-gray-200 leading-none">Humidity</h2>
+                    <img>
+                    <p id ="humidity" class=" mt-2 text-gray-300 text-2xl"></p>
+                </div>
+            </div>
+          </div>
+          <div class=" lg:pl-20 md:pl-6 flex flex-col md:items-start md:text-left items-center text-center lg:ml-[5%] ">
+            <div class="p-4 w-full md:w-[100%] lg:w-[200%] hover:scale-110 hover:ease-in duration-300">
+                <div class="h-full p-5 rounded-lg border-2 border-gray-300 flex flex-col relative w-full">
+                    <h2 class="text-5xl text-yellow-500 pb-4 mb-4 border-b border-gray-200 leading-none">Wind</h2>
+                    <img>
+                    <p id ="wind" class="mt-2 text-2xl text-gray-300"></p>
+                </div>
+            </div>
+          </div>
+        </div>
+        <div class="flex-col md:flex md:flex-row">
+            <div class=" lg:pl-20 md:pl-16 flex flex-col md:items-start md:text-left items-center text-center">
+              <div class="p-4 w-full md:w-[130%] hover:scale-110 hover:ease-in duration-300">
+                  <div class="h-full p-6 rounded-lg border-2 border-gray-300 flex flex-col relative w-full">
+                      <h2 class="text-5xl text-yellow-500 pb-4 mb-4 border-b border-gray-200 leading-none">Sunrise</h2>
+                      <img>
+                      <p id="sunrise" class="text-gray-300"></p>
+                  </div>
+              </div>
+            </div>
+            <div class=" lg:pl-20 md:pl-16 flex flex-col md:items-start md:text-left items-center text-center ">
+              <div class="p-4  w-full md:w-[130%] hover:scale-110 hover:ease-in duration-300">
+                  <div class="h-full p-6 rounded-lg border-2 border-gray-300 flex flex-col relative">
+                      <h2 class="text-5xl text-yellow-500 pb-4 mb-4 border-b border-gray-200 leading-none">Sunset</h2>
+                      <img>
+                      <p id="sunset" class="text-gray-300"></p>
+                  </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        </div>
+      </section>
+
+
+    <section id="section" class=" lg:mx-8 place-items-center  flex flex-col lg:flex-row justify-center p-4" id="weatherforecast">
+    </section>
+    <script src="./main.js"></script>
+</body>
+</html>
