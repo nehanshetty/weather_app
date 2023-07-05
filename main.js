@@ -3,6 +3,7 @@ const btn = document.getElementById("search");
 const btn2 = document.getElementById("myLocation");
 const time1 = document.getElementById("time");
 const date1 = document.getElementById("date");
+let sec1 = document.getElementById("section");
 let currentloc = document.getElementById("currentLocation");
 const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
 const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
@@ -19,7 +20,7 @@ function getweather(loc){
         let temp = document.getElementById('temp');
         let icons=document.getElementById('img');
         let description=document.getElementById('desc');
-        let body= document.getElementById('ma');
+        let body= document.getElementById('main');
         fetch('https://api.openweathermap.org/data/2.5/weather?q='+loc+'&appid='+ apiKey).
         then(response=>response.json()).
         then(data=>{
@@ -30,7 +31,7 @@ function getweather(loc){
         document.getElementById('noResult').classList.add('hidden');
         temp.innerHTML=(data.main.temp-273.15).toFixed(2)+'°C';
         let {icon}=data.weather[0];
-        document.getElementById('currentLocation').classList.remove('hidden')
+        document.getElementById('currentLocation').classList.remove('hidden');
         currentloc.innerHTML=data.name;
         description.innerHTML=data.weather[0].description;
         body.classList.add("bg-[url('https://source.unsplash.com/random/?"+loc+"')]");
@@ -42,8 +43,12 @@ function getweather(loc){
         document.querySelector('#sunset').innerHTML=new Date((timezone+data.sys.sunset)*1000).toUTCString();
         document.getElementById('hero').classList.remove('hidden');
     }).catch((e)=>{
-    nores.innerHTML="No match found for the search";
-    document.getElementById('noResult').classList.remove('hidden');
+        nores.innerHTML="No match found for the search";
+        document.getElementById('noResult').classList.remove('hidden');
+        document.getElementById('hero').classList.add('hidden');
+        sec1.innerHTML='';
+        document.getElementById('currentLocation').classList.add('hidden');
+
      })
 }
 
@@ -82,7 +87,6 @@ function getForecast(loc){
        let date=new Date(d.list[0].dt_txt)
        let hours= (24-date.getHours())/3;
        console.log(d.list[hours]);
-       let sec1 = document.getElementById("section");
        sec1.innerHTML='';
        for(let i=0;i<5;i++, hours+=8)
        {
